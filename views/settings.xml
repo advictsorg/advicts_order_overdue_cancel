@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_inventory_settings_form" model="ir.ui.view">
+        <field name="name">inventory.settings.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="stock.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='operations_setting_container']" position="after">
+                <block title="Order Overdue Cancel" name="default_overdue_cancel_setting_container">
+                    <setting id="overdue_cancel_activate" company_dependent="1"
+                             help="Activate the Overdue Cancel to cancel delivery orders that are in the ready state after specific days if they are not completed, along with canceling all sales orders and related invoices.">
+                        <field name="overdue_cancel_activate"/>
+                        <div class="content-group" invisible="not overdue_cancel_activate">
+                            <div class="row mt16">
+                                <label for="overdue_cancel_days" class="col-lg-4 o_light_label"/>
+                                <field name="overdue_cancel_days"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
